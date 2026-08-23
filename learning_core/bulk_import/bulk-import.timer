@@ -1,0 +1,11 @@
+[Unit]
+Description=Pace the one-time bulk AI-chat import
+
+[Timer]
+# Every 30 min, offset from capture(:0/10) & distiller(:5/30) to keep logs tidy.
+# ~4 Gemini calls/run → ~192/day, under the free cap with headroom. Self-stops when done.
+OnCalendar=*:15/30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

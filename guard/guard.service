@@ -1,0 +1,14 @@
+[Unit]
+Description=AI Router availability guard (maintains quota/active_pool.json from rules + usage)
+
+[Service]
+Type=simple
+# Recompute the active pool every GUARD_INTERVAL seconds (default 60). Pure local file
+# I/O, no network, no keys. Atomic write so the router never reads a half-file.
+Environment=GUARD_INTERVAL=60
+ExecStart=/usr/bin/python %h/syncthing/archlinux/ai_router/guard/guard.py
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Poll Hermes session store for new Signal-group turns
+
+[Timer]
+# Realtime schedule (re-arms reliably regardless of uptime). Every 10 min.
+# Cheap local SQLite read, no Gemini call.
+OnCalendar=*:0/10
+Persistent=true
+
+[Install]
+WantedBy=timers.target

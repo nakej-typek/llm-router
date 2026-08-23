@@ -1,0 +1,151 @@
+{
+  "fetched_at": "2026-08-23",
+  "generated_at": "2026-08-23T00:04:16+02:00",
+  "schema": "router keys on provider+model (glob ok). standard windows: rpm/rpd/tpm; irregular windows: limit + window_sec. self-accounting: available = count(own calls in window) < limit.",
+  "sources": {
+    "manual": "known_limits.json",
+    "community": [
+      "https://raw.githubusercontent.com/amardeeplakshkar/awesome-free-llm-apis/main/README.md",
+      "https://raw.githubusercontent.com/cheahjs/free-llm-api-resources/main/README.md"
+    ],
+    "gemini_model": "gemini-3.5-flash-lite"
+  },
+  "limits": [
+    {
+      "provider": "anyapi",
+      "model": "*",
+      "rpm": 20,
+      "rpd": 200,
+      "notes": "Account-wide free tier limits",
+      "source": "community"
+    },
+    {
+      "provider": "api-airforce",
+      "model": "*",
+      "notes": "Rate-limited for light use",
+      "source": "community"
+    },
+    {
+      "provider": "cerebras",
+      "model": "*",
+      "rpm": 30,
+      "rpd": 14400,
+      "tpm": 60000,
+      "notes": "Wafer-scale chip free limits",
+      "source": "community"
+    },
+    {
+      "provider": "cloudflare",
+      "model": "*",
+      "notes": "10,000 neurons/day free",
+      "source": "community"
+    },
+    {
+      "provider": "cohere",
+      "model": "*",
+      "rpm": 20,
+      "notes": "1,000 requests/month limit",
+      "source": "community"
+    },
+    {
+      "provider": "github-models",
+      "model": "*",
+      "rpm": 10,
+      "rpd": 50,
+      "notes": "Varies by model tier",
+      "source": "community"
+    },
+    {
+      "provider": "google-gemini",
+      "model": "flash",
+      "rpm": 15,
+      "rpd": 1500,
+      "notes": "Limits apply to Flash models.",
+      "source": "community"
+    },
+    {
+      "provider": "google-gemini",
+      "model": "gemini-2.5-pro",
+      "rpm": 2,
+      "rpd": 50,
+      "notes": "Limits apply to 2.5 Pro.",
+      "source": "community"
+    },
+    {
+      "provider": "groq",
+      "model": "*",
+      "rpm": 30,
+      "rpd": 14400,
+      "tpm": 6000,
+      "notes": "Limits vary by model",
+      "source": "community"
+    },
+    {
+      "provider": "huggingface",
+      "model": "*",
+      "notes": "$0.10/month free credits auto-refresh",
+      "source": "community"
+    },
+    {
+      "provider": "kluster",
+      "model": "*",
+      "notes": "Rate limits undocumented",
+      "source": "community"
+    },
+    {
+      "provider": "llm7",
+      "model": "*",
+      "rpm": 15,
+      "notes": "Increases to 30 RPM with free token",
+      "source": "community"
+    },
+    {
+      "provider": "mistral",
+      "model": "*",
+      "notes": "1 req/sec; 1B tokens/month limit",
+      "source": "community"
+    },
+    {
+      "provider": "nvidia",
+      "model": "*",
+      "rpm": 40,
+      "notes": "Credit-based, replenishes",
+      "source": "community"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-free",
+      "limit": 10,
+      "window_sec": 18000,
+      "notes": "ChatGPT/Codex INTERFACE allowance ~10 per 5h (JP-known). Not in API-tier lists -> hand-set. Router self-counts before 429.",
+      "source": "manual"
+    },
+    {
+      "provider": "openrouter",
+      "model": "*:free",
+      "rpm": 20,
+      "rpd": 50,
+      "notes": "Account-level free throttle; ~1000/day after a one-time $10 credit.",
+      "source": "manual"
+    },
+    {
+      "provider": "pollinations",
+      "model": "*",
+      "notes": "Per-IP, resets hourly",
+      "source": "community"
+    },
+    {
+      "provider": "unorouter",
+      "model": "*:free",
+      "rpm": 1,
+      "notes": "Per model per user",
+      "source": "community"
+    },
+    {
+      "provider": "zhipu",
+      "model": "*",
+      "notes": "Undocumented free tier limits",
+      "source": "community"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "jp-filesystem-readonly": {
+      "command": "/home/user/.local/share/ai_router/router-venv/bin/python",
+      "args": ["/home/user/syncthing/archlinux/ai_router/mcp_fs/fs_server.py"]
+    }
+  }
+}

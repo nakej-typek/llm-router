@@ -1,0 +1,19 @@
+{
+  "_note": "Hand-maintained free-tier limits (emitted with source='manual'). These OVERRIDE the daily Gemini-researched community entries in free_limits.json on matching provider+model. Edit freely. Standard windows: use rpm/rpd/tpm. Irregular windows (e.g. GPT 10 per 5h): use limit + window_sec (60=min, 3600=hour, 18000=5h, 86400=day).",
+  "limits": [
+    {
+      "provider": "openai",
+      "model": "gpt-free",
+      "limit": 10,
+      "window_sec": 18000,
+      "notes": "ChatGPT/Codex INTERFACE allowance ~10 per 5h (JP-known). Not in API-tier lists -> hand-set. Router self-counts before 429."
+    },
+    {
+      "provider": "openrouter",
+      "model": "*:free",
+      "rpm": 20,
+      "rpd": 50,
+      "notes": "Account-level free throttle; ~1000/day after a one-time $10 credit."
+    }
+  ]
+}

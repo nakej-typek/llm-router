@@ -1,0 +1,13 @@
+[Unit]
+Description=Run the learning core distiller periodically
+
+[Timer]
+# Realtime schedule (re-arms reliably regardless of uptime). At :05 and :35 — 5 min
+# after the capture poll, so fresh raw is available. Distiller no-ops if <200 new
+# chars, so idle = free. [Arch-Claude: switched from OnBootSec/OnUnitActiveSec, which
+# stuck at NextElapse=infinity on this box's uptime.]
+OnCalendar=*:5/30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

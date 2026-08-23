@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodically ingest new Claude Code sessions into the learning raw feed
+
+[Timer]
+# offset from capture(:0/10) and distiller(:5/30, now :2/30 effectively) to keep logs tidy
+OnCalendar=*:20/30
+Persistent=true
+
+[Install]
+WantedBy=timers.target

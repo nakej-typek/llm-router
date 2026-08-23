@@ -1,0 +1,17 @@
+[Unit]
+Description=GPT interface endpoint (Codex CLI over tailnet) for the AI router
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Default bind is localhost; the tailscale.conf drop-in overrides GPT_ENDPOINT_HOST
+# with the Tailscale IP so the router can reach it over the tailnet (never 0.0.0.0).
+Environment=GPT_ENDPOINT_HOST=127.0.0.1
+Environment=GPT_ENDPOINT_PORT=8901
+ExecStart=/usr/bin/python %h/syncthing/archlinux/ai_router/gpt_endpoint/gpt_endpoint.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

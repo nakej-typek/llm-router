@@ -1,0 +1,10 @@
+[Unit]
+Description=Learning core raw capture (Signal group -> raw/hermes-signal.md)
+After=network-online.target
+
+[Service]
+Type=oneshot
+# capture.py defaults LEARNING_CORE_DIR to its own folder, so raw/ resolves next to it
+# (the Syncthing corpus). Reads ~/.hermes/state.db read-only. Adjust path if Syncthing
+# lives elsewhere on this Arch box.
+ExecStart=/usr/bin/python3 %h/syncthing/archlinux/ai_router/learning_core/capture.py

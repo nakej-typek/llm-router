@@ -1,0 +1,14 @@
+[Unit]
+Description=OWUI Speech-to-Text via Gemini (same model/prompt as Claudoslav Voice)
+After=network-online.target
+
+[Service]
+Type=simple
+Environment=OWUI_STT_HOST=127.0.0.1
+Environment=OWUI_STT_PORT=8902
+ExecStart=/usr/bin/python %h/syncthing/archlinux/ai_router/owui_stt/stt_endpoint.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

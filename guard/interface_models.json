@@ -1,0 +1,59 @@
+{
+  "_note": "Models the guard pools that are NOT auto-discovered from OpenRouter's free list (free_models.json). 'slug' MUST equal the router's to_slug() output (provider/model) so availability lines up. kind: 'interface' = called via a bespoke adapter (Codex CLI, claude -p); 'api-free' = a normal free API tier the router calls via LiteLLM. Buckets/limits come from free_limits.json by glob match (google-gemini/* etc.); an entry with no matching rule is treated as always-available (soft; live-429 rotation is the backstop).",
+  "models": [
+    {
+      "slug": "openai/gpt-free",
+      "provider": "openai",
+      "model": "gpt-free",
+      "kind": "interface",
+      "via": "codex-tailnet",
+      "notes": "GPT via Codex CLI endpoint; ~10 calls / 5h window (known_limits openai/gpt-free)."
+    },
+    {
+      "slug": "anthropic/opus",
+      "provider": "anthropic",
+      "model": "opus",
+      "kind": "interface",
+      "via": "claude-cli",
+      "notes": "Claude Opus via `claude -p --model opus` (JP's flat subscription). No request rule -> always-available; live-429 rotation is the backstop if a usage window is hit."
+    },
+    {
+      "slug": "anthropic/sonnet",
+      "provider": "anthropic",
+      "model": "sonnet",
+      "kind": "interface",
+      "via": "claude-cli",
+      "notes": "Claude Sonnet via `claude -p --model sonnet` (flat subscription). Leads the stredni tier."
+    },
+    {
+      "slug": "anthropic/haiku",
+      "provider": "anthropic",
+      "model": "haiku",
+      "kind": "interface",
+      "via": "claude-cli",
+      "notes": "Claude Haiku via `claude -p --model haiku` (flat subscription, cheap/fast). Backup on trivialni/stredni."
+    },
+    {
+      "slug": "anthropic/fable",
+      "provider": "anthropic",
+      "model": "fable",
+      "kind": "interface",
+      "via": "claude-cli",
+      "notes": "Claude Fable (claude-fable-5) via `claude -p --model fable`. Creative model — not in difficulty tiers; pooled available for future direct-pick in OWUI."
+    },
+    {
+      "slug": "google-gemini/gemini-flash-latest",
+      "provider": "google-gemini",
+      "model": "gemini-flash-latest",
+      "kind": "api-free",
+      "notes": "Router workhorse (free alias — versioned 3.x-flash are paid-only on Arch key). Shared with Hermes chat; matches google-gemini/* rule bucket."
+    },
+    {
+      "slug": "google-gemini/gemini-flash-lite-latest",
+      "provider": "google-gemini",
+      "model": "gemini-flash-lite-latest",
+      "kind": "api-free",
+      "notes": "Router light tier (free alias). Shared with Hermes fallback; matches google-gemini/* rule bucket."
+    }
+  ]
+}

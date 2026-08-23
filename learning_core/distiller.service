@@ -1,0 +1,11 @@
+[Unit]
+Description=Learning core distiller (one distillation pass)
+After=network-online.target
+
+[Service]
+Type=oneshot
+# distiller.py defaults LEARNING_CORE_DIR to its own folder, so raw/ wiki/ schema/
+# resolve next to it (here: the Syncthing corpus, so the updated wiki syncs back to
+# JP's desktop / Obsidian — Article D transparency). Adjust the path if the Syncthing
+# folder lives elsewhere on this Arch box.
+ExecStart=/usr/bin/python3 %h/syncthing/archlinux/ai_router/learning_core/distiller.py

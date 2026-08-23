@@ -1,0 +1,10 @@
+[Unit]
+Description=Bulk historical AI-chat import → learning wiki (one paced step)
+After=network-online.target
+
+[Service]
+Type=oneshot
+# One bounded slice per run (extract once, then a few map batches, then reduce).
+# FREE Gemini gemini-3.5-flash-lite (separate quota bucket from voice's 3.1-flash-lite).
+# Resumable + 429-safe: if it pauses, the next timer fire continues.
+ExecStart=/usr/bin/python3 %h/syncthing/archlinux/ai_router/learning_core/bulk_import/bulk_import.py step

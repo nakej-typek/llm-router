@@ -1,0 +1,18 @@
+__pycache__/
+*.pyc
+.venv/
+*.bak.*
+
+# secrets - never committed
+.api_key
+.openrouter_key
+*.env
+
+# runtime state, learned corpus, logs
+quota/
+learning_core/raw/
+learning_core/wiki/
+learning_core/imports/
+.*_state.json
+*.jsonl
+free_models.json

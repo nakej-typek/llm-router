@@ -1,0 +1,10 @@
+[Unit]
+Description=Claude Code session ingester (JP's "read ALL chats" — Arch copy)
+
+[Service]
+Type=oneshot
+Environment=CC_PROJECTS_DIR=%h/.claude/projects
+Environment=CC_RAW_OUT=%h/syncthing/archlinux/ai_router/learning_core/raw/claude-code-sessions.arch.md
+Environment=CC_STATE=%h/.local/share/ai_router/cc_ingest_state.json
+Environment=CC_MACHINE=arch
+ExecStart=/usr/bin/python %h/syncthing/archlinux/ai_router/learning_core/cc_ingest/cc_ingest.py

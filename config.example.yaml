@@ -1,0 +1,30 @@
+# ── Hermes config — AI Router (JP) ── deploy version for Arch ──────────────
+# Claude is NOT in Hermes — it stays as Claude Code (subscription) for coding.
+# Hermes runs entirely on Gemini (free tier). Guard = free open model (OpenRouter).
+# ⚠ Verify model names via `hermes model`. Target: ~/.hermes/config.yaml
+
+model:
+  provider: "gemini"
+  default: "gemini-flash-latest"     # reasoning. "gemini-pro-latest" = smarter
+  context_length: 1000000
+  max_tokens: 8192
+
+auxiliary:
+  compression:                       # summarization = the core of "learning"
+    provider: "gemini"
+    model: "gemini-flash-lite-latest"
+    reasoning_effort: "low"
+    fallback_chain:
+      - provider: "openrouter"       # guard — free open model
+        model: "qwen/qwen-2.5-72b-instruct:free"
+  session_search:
+    provider: "gemini"
+    model: "gemini-flash-lite-latest"
+    reasoning_effort: "low"
+  title_generation:
+    provider: "gemini"
+    model: "gemini-flash-lite-latest"
+  web_extract:
+    provider: "gemini"
+    model: "gemini-flash-lite-latest"
+    reasoning_effort: "low"
